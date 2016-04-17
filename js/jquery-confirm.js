@@ -11,7 +11,6 @@
 if (typeof jQuery === 'undefined') {
     throw new Error('jquery-confirm requires jQuery');
 }
-
 var jconfirm, Jconfirm;
 (function ($) {
     "use strict";
@@ -171,6 +170,8 @@ var jconfirm, Jconfirm;
             this.content = (string) ? string : this.content;
             var animate = (string) ? true : false;
 
+
+
             /*
              * Set content.
              */
@@ -214,7 +215,10 @@ var jconfirm, Jconfirm;
                     });
                 }
 
-            } else {
+            } else if (typeof this.content === 'object') {
+                this.contentDiv.html('');
+                this.contentDiv.append(this.content);
+            }  else {
                 console.error('Invalid option for property content, passed: ' + typeof this.content);
             }
 
